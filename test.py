@@ -81,8 +81,8 @@ data = resp.json() # Check the JSON Response Content documentation below
 # print("url from api"+data['entry'][0]['url'])
 print('...新建pdf文件...')
 pdf = FPDF()
-pdf.add_font('HanyiSentyChalk 2018','','HanyiSentyChalk 2018.ttf',True)
-pdf.set_font('HanyiSentyChalk 2018',size=12)
+pdf.add_font('setofont','','setofont.ttf',True)
+pdf.set_font('setofont',size=12)
 print('...設定web driver...')
 chrome_options = Options() # 啟動無頭模式
 chrome_options.add_argument('--no-sandbox')
