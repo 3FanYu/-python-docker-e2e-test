@@ -3,10 +3,19 @@ pipeline {
         dockerfile true
     }
     stages {
-        stage('stepOne') {
+        stage('prep') {
             steps {
                 sh 'python --version'
-                sh 'python test.py 3樊 fanfanfan@gmail.com 0987654321'
+            }
+        }
+        stage('run'){
+            steps{
+                sh 'python test.py 3樊 fanfanfan9453@gmail.com 0987654321'
+            }
+        }
+        stage('done'){
+            steps{
+                sh 'echo All Done!'
             }
         }
     }
