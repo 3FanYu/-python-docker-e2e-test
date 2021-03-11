@@ -14,6 +14,8 @@ from datetime import datetime
 from fpdf import FPDF
 import json 
 import os
+import sys
+
 
 
 async def performClick(driver,xpath):
@@ -71,6 +73,14 @@ def makedirs():
     if not (os.path.exists('PDF')):
         os.makedirs('PDF')
 
+def getEnrollDataFromInput():
+    name=sys.argv[1] if len(sys.argv)>1 else '測試樊'
+    email=sys.argv[2] if len(sys.argv)>2 else 'fanfan9453@gmail.com'
+    tel=sys.argv[3] if len(sys.argv)>3 else '0912345678'
+    print('...接收輸入資料:...\n ...姓名:'+name+'...\n ...信箱:'+email+'...\n ...電話:'+tel+'...')
+    return name,email,tel
+
+name,email,tel=getEnrollDataFromInput()
 makedirs()
 loop = asyncio.get_event_loop()
 now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -133,8 +143,6 @@ loop.run_until_complete(performClick(driver,'//*[@id="registrationsNewApp"]/div/
 print('...下一頁...')
 loop.run_until_complete(performClick(driver,'//*[@id="guestModal"]/div[2]/div/div[3]/button'))
 print('...關閉modal...')
-print('...從json file取得報名資料...')
-name,email,tel=getEnrollData()
 
 loop.run_until_complete(performWrite(driver,'//*[@id="field_text_701843"]/div/div/input',name+now))
 print('...寫入姓名:'+name+now+'...')
