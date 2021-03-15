@@ -11,6 +11,8 @@ pipeline {
         stage('run'){
             steps{
                 sh 'python test.py 3樊 fanfanfan9453@gmail.com 0987654321'
+                sh 'pwd'
+                sh 'ls'
             }
         }
         stage('done'){
